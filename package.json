@@ -4,7 +4,12 @@
   "scripts": {
     "dev": "vinxi dev",
     "build": "vinxi build",
-    "start": "vinxi start"
+    "start": "vinxi start",
+    "pretty": "prettier --check \"src/**/*.{ts,tsx}\"",
+    "pretty-fix": "prettier --write \"src/**/*.{ts,tsx}\"",
+    "lint": "eslint \"src/**/*.{ts,tsx}\"",
+    "lint-fix": "eslint --fix \"src/**/*.{ts,tsx}\"",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@prisma/client": "^5.12.1",
