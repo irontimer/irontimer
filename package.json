@@ -1,5 +1,5 @@
 {
-  "name": "example-with-prisma",
+  "name": "irontimer",
   "type": "module",
   "scripts": {
     "dev": "vinxi dev",
