@@ -1,4 +1,5 @@
 import { createAsync, type RouteDefinition } from "@solidjs/router";
+import { JSX } from "solid-js";
 import { getUser, logout } from "~/lib";
 
 export const route = {
@@ -7,7 +8,7 @@ export const route = {
 	},
 } satisfies RouteDefinition;
 
-export default function Home() {
+export default function Home(): JSX.Element {
 	const user = createAsync(() => getUser(), { deferStream: true });
 	return (
 		<main class="w-full p-4 space-y-2">

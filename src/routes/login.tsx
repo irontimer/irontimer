@@ -1,8 +1,8 @@
 import { useSubmission, type RouteSectionProps } from "@solidjs/router";
-import { Show } from "solid-js";
+import { JSX, Show } from "solid-js";
 import { loginOrRegister } from "~/lib";
 
-export default function Login(props: RouteSectionProps) {
+export default function Login(props: RouteSectionProps): JSX.Element {
 	const loggingIn = useSubmission(loginOrRegister);
 
 	return (

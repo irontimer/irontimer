@@ -37,6 +37,7 @@ export default [
 			...solid.rules,
 			"prettier/prettier": "error",
 			"linebreak-style": ["error", "unix"],
+			eqeqeq: ["error", "always"],
 			indent: [
 				"error",
 				"tab",
