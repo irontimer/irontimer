@@ -4,40 +4,39 @@ import tsParser from "@typescript-eslint/parser";
 import prettierConfig from "eslint-config-prettier";
 import prettier from "eslint-plugin-prettier";
 import solid from "eslint-plugin-solid/configs/recommended";
-import typescriptEslintPlugin from "eslint-plugin-solid/configs/typescript";
+import typescriptEslintConfig from "eslint-plugin-solid/configs/typescript";
 import globals from "globals";
 
 export default [
 	js.configs.recommended,
 	prettierConfig,
-	typescriptEslintPlugin,
+	typescriptEslintConfig,
 	{
+		files: ["src/**/*.ts", "src/**/*.tsx"],
 		plugins: {
 			prettier,
 			"@typescript-eslint": typescriptEslint,
+			solid: solid.plugins.solid,
 		},
 		languageOptions: {
 			globals: {
 				...globals.node,
 				...globals.browser,
 			},
-
 			parser: tsParser,
 			ecmaVersion: "latest",
 			sourceType: "module",
-
 			parserOptions: {
 				ecmaFeatures: {
 					jsx: true,
 				},
-
-				project: "**/tsconfig.json",
+				project: "tsconfig.json",
 			},
 		},
 		rules: {
+			...solid.rules,
 			"prettier/prettier": "error",
 			"linebreak-style": ["error", "unix"],
-
 			indent: [
 				"error",
 				"tab",
@@ -45,18 +44,6 @@ export default [
 					SwitchCase: 1,
 				},
 			],
-		},
-	},
-	{
-		files: ["**/*.ts", "**/*.tsx"],
-		...solid,
-		languageOptions: {
-			parser: tsParser,
-			parserOptions: {
-				project: "tsconfig.json",
-			},
-		},
-		rules: {
 			"no-unused-vars": "off",
 			"@typescript-eslint/no-unused-vars": [
 				"error",
@@ -64,7 +51,6 @@ export default [
 					argsIgnorePattern: "^_",
 				},
 			],
-
 			"@typescript-eslint/explicit-function-return-type": [
 				"error",
 				{
@@ -73,7 +59,6 @@ export default [
 					allowHigherOrderFunctions: true,
 				},
 			],
-
 			"@typescript-eslint/strict-boolean-expressions": [
 				"error",
 				{
@@ -82,7 +67,6 @@ export default [
 					allowNullableObject: false,
 				},
 			],
-
 			curly: ["error", "all"],
 			quotes: ["error", "double"],
 			"arrow-parens": ["error", "always"],
